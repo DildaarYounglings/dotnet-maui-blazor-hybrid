@@ -1,0 +1,48 @@
+﻿
+<EditForm Model="@todo">
+    <div>
+        <label for="todoItem">
+            TodoControl
+        </label>
+        <InputText @bind-Value="todo.Text" class="form-control" id="todoItem"/>
+        <button @onclick="AddTodo">
+            add todo
+        </button>
+    </div>
+</EditForm>
+<ul style="display:flex;flex-direction:row;gap:2rem;list-style-type:none">
+    @foreach(var item in todoList)
+    {
+        switch(item.IsCompleted)
+        {
+            case true:
+                <li><span style="text-decoration:line-through">@item.Text</span><button @onclick="() => item.IsCompleted = !item.IsCompleted ">toggle completed</button><button @onclick="() => DeleteTodo(item) ">Delete item</button></li>
+                break;
+            case false:
+                <li><span>@item.Text</span><button @onclick="() => item.IsCompleted = !item.IsCompleted ">toggle completed</button><button @onclick=" () => DeleteTodo(item)">Delete item</button></li>
+                break;
+        }
+    }
+</ul>
+
+
+
+@code{
+    // these variables are our unset state variables for global scope //
+    private List<TodoItem> todoList = new();
+    private TodoItem todo = new();
+    /// <summary>
+    ///     the function appends items to a list and re instantiates the todoItem
+    /// </summary>
+    public void AddTodo()
+    {
+        todoList.Add(todo);
+        todo = new();
+    }
+
+    public void DeleteTodo(TodoItem item)
+    {
+        todoList.Remove(item);
+    }
+
+}

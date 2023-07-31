@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\maui-blazor-hybrid-project.props" />
+</Project>

@@ -1,0 +1,54 @@
+﻿<EditForm Model="user">
+    <table>
+        <thead><tr><th>User Nsme</th><th>User Email</th><th>User Actions</th></tr></thead>
+        <tbody style="margin:1rem 0rem;">
+            @foreach(var item in users)
+            {
+            switch (item.IsEditing)
+            {
+                case true:
+                    <tr style="margin-bottom:1rem;">
+                        <td><InputText @bind-Value="item.FullName" /></td>
+                        <td><InputText @bind-Value="item.Email"/></td>
+                        <td>
+                            <button @onclick="() => {item.IsEditing = !item.IsEditing;}">Cancel</button><button>Save</button>
+                        </td>
+                    </tr>
+                    break;
+                case false:
+                    <tr style="margin-bottom:1rem;">
+                        <td>@item.FullName</td>
+                            <td>@item.Email</td>
+                            <td>
+                                <button @onclick="() => {item.IsEditing = !item.IsEditing;} ">Edit</button><button @onclick=" () => {DeleteUser(item);} ">Delete</button>
+                            </td>
+                        </tr>
+                        break;
+                }
+
+            }
+            
+        </tbody>
+    </table>
+    <div>
+        <InputText @bind-Value="user.FullName" />
+        <InputText @bind-Value="user.Email" />
+        <button @onclick="AddUser">Add New User</button>
+    </div>
+</EditForm>
+
+@code {
+    private List<UserModel> users = new();
+    private UserModel user = new();
+
+    private void AddUser()
+    {
+        users.Add(user);
+        user = new();
+    }
+
+    private void DeleteUser(UserModel element)
+    {
+        users.Remove(element);
+    }
+}
