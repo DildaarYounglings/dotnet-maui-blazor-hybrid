@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-07-31T12:45:03.193</Modified>
+      <Modified>2023-08-17T12:48:37.113</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-07-31T12:35:26.153</Modified>
+      <Modified>2023-08-17T10:46:23.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\maui-blazor-hybrid-project.runtimeconfig.json">
       <PackagePath>maui-blazor-hybrid-project.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\maui-blazor-hybrid-project.dll">
       <PackagePath>maui-blazor-hybrid-project.dll</PackagePath>
-      <Modified>2023-07-31T12:45:01.576</Modified>
+      <Modified>2023-08-17T12:48:34.688</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>maui-blazor-hybrid-project.exe</PackagePath>
-      <Modified>2023-07-31T12:45:01.607</Modified>
+      <Modified>2023-08-17T12:48:34.728</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.5\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -987,7 +987,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Dildaar_Abrahams\source\repos\maui-blazor-hybrid-solution\maui-blazor-hybrid-project\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\maui-blazor-hybrid-project.deps.json">
       <PackagePath>maui-blazor-hybrid-project.deps.json</PackagePath>
-      <Modified>2023-07-31T12:45:02.941</Modified>
+      <Modified>2023-08-17T12:48:36.605</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

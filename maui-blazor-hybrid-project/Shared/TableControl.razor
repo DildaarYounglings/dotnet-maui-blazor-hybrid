@@ -1,35 +1,41 @@
 ﻿<EditForm Model="user">
     <table>
-        <thead><tr><th>User Nsme</th><th>User Email</th><th>User Actions</th></tr></thead>
+        <thead><tr style="display:flex;align-items:center;align-content:center;"><th>User Name</th><th>User Email</th><th>User Actions</th></tr></thead>
         <tbody style="margin:1rem 0rem;">
             @foreach(var item in users)
             {
-            switch (item.IsEditing)
-            {
-                case true:
-                    <tr style="margin-bottom:1rem;">
-                        <td><InputText @bind-Value="item.FullName" /></td>
-                        <td><InputText @bind-Value="item.Email"/></td>
-                        <td>
-                            <button @onclick="() => {item.IsEditing = !item.IsEditing;}">Cancel</button><button>Save</button>
-                        </td>
-                    </tr>
-                    break;
-                case false:
-                    <tr style="margin-bottom:1rem;">
-                        <td>@item.FullName</td>
-                            <td>@item.Email</td>
+                switch (item.IsEditing)
+                {
+                    case true:
+                        <tr style="margin-bottom:1rem;">
+                            <td><InputText @bind-Value="item.FullName" /></td>
+                            <td><InputText @bind-Value="item.Email"/></td>
                             <td>
-                                <button @onclick="() => {item.IsEditing = !item.IsEditing;} ">Edit</button><button @onclick=" () => {DeleteUser(item);} ">Delete</button>
+                                <button @onclick="() => {item.IsEditing = !item.IsEditing;}">Cancel</button><button @onclick="() => {SaveUser(item);}">Save</button>
                             </td>
                         </tr>
                         break;
+                    case false:
+                        <tr style="margin-bottom:1rem;">
+                            <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>
+                                    <button @onclick="() => {item.IsEditing = !item.IsEditing;} ">Edit</button><button @onclick=" () => {DeleteUser(item);} ">Delete</button>
+                                </td>
+                        </tr>
+                            break;
                 }
-
             }
             
         </tbody>
     </table>
+
+    <div>
+        @foreach(var error in errorLog)
+        {
+            <h4 style="background-color:red;color:white">@error</h4>
+        }
+    </div>
     <div>
         <InputText @bind-Value="user.FullName" />
         <InputText @bind-Value="user.Email" />
@@ -39,16 +45,29 @@
 
 @code {
     private List<UserModel> users = new();
+    private List<string> errorLog = new();
     private UserModel user = new();
 
     private void AddUser()
     {
+        //errorLog.Clear();
         users.Add(user);
         user = new();
     }
 
     private void DeleteUser(UserModel element)
     {
+        //errorLog.Clear();
         users.Remove(element);
+    }
+
+    private void SaveUser(UserModel element)
+    {
+        //errorLog.Clear();
+        var index = users.IndexOf(element);
+        var savedUser = new UserModel() { FullName = users[index].FullName, Email = users[index].Email,IsEditing = users[index].IsEditing,IsActive = users[index].IsActive};
+        users[index] = savedUser;
+
+        //errorLog.Add($"logging SaveUser function: {index}, {users[index].FullName}, {users[index].Email}, {users[index].IsEditing}, {users[index].IsActive}");
     }
 }

@@ -1,0 +1,81 @@
+﻿<EditForm Model="note">
+    <div>
+        <h3>NotePadControl</h3>
+        <ul style="list-style:none">
+            <li><InputText @bind-Value="note.Title" /></li>
+            <li><InputTextArea @bind-Value="note.Description" /></li>
+            <button @onclick="AddNotepadItem">Add</button>
+        </ul>
+    </div>
+    
+    <div style="display:grid;grid-template-columns:auto auto auto;background-color:grey">
+        @foreach (var item in notes)
+        {
+            switch (item.IsEditing)
+            {
+                case true:
+                    <div>
+                        <ul style="list-style:none">
+                            <li>
+                                <button @onclick="() => {item.IsEditing = !item.IsEditing;} ">Cancel</button>
+                                <button @onclick="() => {SaveNotepadItem(item);}">Save</button>
+                            </li>
+                            <li>
+                                <InputText @bind-Value="item.Title" />
+                            </li>
+                            <li>
+                                <InputTextArea @bind-Value="item.Description" />
+                            </li>
+                        </ul>
+                        </div>
+                        break;
+                    case false:
+                        <div>
+                            <ul style="list-style:none;">
+                                <li>
+                                    <button @onclick="() => {item.IsEditing = !item.IsEditing;}">Edit</button>
+                                    <button @onclick="() => {DeleteNotePadItem(item);}">Delete</button>
+                                </li>
+                                <li style="background-color:white">
+                                    <h1 style="color:red">@item.Title</h1><span style="color:darkcyan">@item.DateAndTime</span>
+                                </li>
+                                <li style="background-color:white;color:black">@item.Description</li>
+                            </ul>
+                        </div>
+                        break;
+            }
+        }
+    </div>
+
+</EditForm>
+
+
+
+
+@code {
+    private List<NotePadModel> notes = new();
+    private NotePadModel note = new();
+    private void AddNotepadItem()
+    {
+        notes.Add(note);
+        note = new();
+    }
+    private void DeleteNotePadItem(NotePadModel element)
+    {
+        notes.Remove(element);
+    }
+    private void SaveNotepadItem(NotePadModel element)
+    {
+        var index = notes.IndexOf(element);
+        var savedNotePadItem = new NotePadModel()
+        {
+            Title = notes[index].Title,
+            Description = notes[index].Description,
+            IsEditing = notes[index].IsEditing,
+            DateAndTime = DateTime.Now,
+        };
+        notes[index] = savedNotePadItem;
+        element.IsEditing = false;
+    }
+
+}
